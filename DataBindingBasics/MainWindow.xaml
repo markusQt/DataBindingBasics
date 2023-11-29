@@ -1,0 +1,30 @@
+﻿<Window x:Class="DataBindingBasics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingBasics"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="MyConverter"/>
+    </Window.Resources>
+    <Grid Name="MyGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Name:" FontSize="18" FontWeight="Bold" Grid.Column="0" HorizontalAlignment="Right" Margin="5,80,0,0" Height="34" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label Content="Address:" FontSize="18" FontWeight="Bold" Grid.Column="0" HorizontalAlignment="Right" Margin="5,110,0,0" Height="34" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label Content="Email:" FontSize="18" FontWeight="Bold" Grid.Column="0" HorizontalAlignment="Right" Margin="5,140,0,0" Height="34" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label Content="Number:" FontSize="18" FontWeight="Bold" Grid.Column="0" 
+               HorizontalAlignment="Right" Margin="5,170,0,0" Height="34" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+
+        <TextBox Text="{Binding Name}" FontSize="18"  Grid.Column="1" HorizontalAlignment="Left" Margin="5,80,0,0" Height="25" Width="300" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Address}" FontSize="18" Grid.Column="1" HorizontalAlignment="Left" Margin="5,110,0,0" Height="25"  Width="300" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Email}" FontSize="18"  Grid.Column="1" HorizontalAlignment="Left" Margin="5,140,0,0" Height="25"  Width="300" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Number}" FontSize="18"  Grid.Column="1" HorizontalAlignment="Left" Margin="5,170,0,0" Height="25"  Width="300" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <CheckBox Name="CBox" Margin="25,232,88,135" Content="Button"  Height="35" IsChecked="True" Grid.Column="1"/>
+        <Rectangle Height="100" Width="100" Fill="Coral" Visibility="{Binding ElementName=CBox, Path=IsChecked, Converter= {StaticResource MyConverter} }" Margin="107,242,93,142"/>
+    </Grid>
+</Window>
